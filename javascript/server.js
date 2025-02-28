@@ -2,13 +2,14 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const { Buffer } = require('buffer');
 const Cosmos = require('@keplr-wallet/cosmos');
+const cors = require('cors'); // CORS modülünü ekliyoruz
 require("dotenv").config();
 
 const app = express();
 app.use(express.json());
+app.use(cors()); // Tüm kaynaklara CORS izni veriyoruz
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY;
-
 
 // 🌟 1️⃣ Kimlik Doğrulama ve JWT Token Üretme
 app.post('/auth', (req, res) => {

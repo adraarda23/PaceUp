@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  auth-api:
+    build: .
+    ports:
+      - "3000:3000" # server.js dosyasındaki PORT ile uyumlu
+    environment:
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    volumes:
+      - .:/app # .env dosyasını konteynere bağlar
+    networks:
+      - auth-network
+
+networks:
+  auth-network:
+    driver: bridge

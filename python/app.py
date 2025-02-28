@@ -6,16 +6,18 @@ import os
 import json
 import base64
 from datetime import datetime
-from database import save_game_record, get_game_record, get_last_game_id, get_player_matches
+from python.database import save_game_record, get_game_record, get_last_game_id, get_player_matches
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import random
 import google.generativeai as genai
 import eventlet
 import logging
 import re
+from flask_cors import CORS
 
 # Flask application initialization
 app = Flask(__name__)
+CORS(app)
 
 # .env dosyasını yükle
 load_dotenv()  # Bu satırı ekleyin
